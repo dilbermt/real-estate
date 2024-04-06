@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRouter from "./routes/user.routes.js";
 import authRouter from "./routes/auth.routes.js";
+import errorHandler from "./middlewares/errorhandler.js";
 // configure dotenv
 dotenv.config();
 
@@ -13,6 +14,9 @@ app.use(express.json());
 
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
+
+// error handler middleware
+app.use(errorHandler);
 
 // connect to mongodb
 mongoose
